@@ -1,8 +1,5 @@
-export const getAuthorFromLocalStorage = (): string | null => {
-    const userData = localStorage.getItem('user');
-    return userData ? JSON.parse(userData).name : null;
-  };
-  
+import { getDataLocalStorage } from "@/controllers/localStorage";
+
   export const buildFormData = (form: HTMLFormElement): FormData => {
     const formData = new FormData(form);
     const newFormData = new FormData();
@@ -29,7 +26,7 @@ export const getAuthorFromLocalStorage = (): string | null => {
       }
     });
   
-    const author = getAuthorFromLocalStorage();
+    const author = getDataLocalStorage("name")
     if (author) {
       newFormData.append('author', author);
     }

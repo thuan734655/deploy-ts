@@ -1,6 +1,7 @@
 import { NavChild } from './NavChild';
 import { IcLogout, IcLogo } from '../../resources/assets/icons/index.js';
 import { NavItem } from '../../types/general.js';
+import { getDataLocalStorage } from '@/controllers/localStorage.js';
 
 export default class Header {
   private static listNav: NavItem[] = [
@@ -16,9 +17,7 @@ export default class Header {
   ];
 
   public static render(): string {
-    const userData = localStorage.getItem('user');
-    const author = userData ? JSON.parse(userData).name : null;
-
+    const author = getDataLocalStorage("name");
     if (author && !this.listNav.some(item => item.href === `/add/${author}`)) {
       this.listNav.push({ text: 'Add', href: `/add/${author}` });
     }
