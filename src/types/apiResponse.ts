@@ -5,3 +5,7 @@ export interface IApiResponse {
     totalItems: number;
 }
 
+export interface ILoginResponse {
+    
+}
+
