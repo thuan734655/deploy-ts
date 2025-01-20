@@ -1,0 +1,6 @@
+"scripts": {
+  "dev": "vite",
+  "build": "tsc && vite build",
+  "preview": "vite preview",
+  "start": "vite preview --port $PORT"
+}
