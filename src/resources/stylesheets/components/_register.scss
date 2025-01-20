@@ -1,0 +1,93 @@
+@use '../Abstract/' as *;
+
+.register-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  @include flex($justify: center, $align: center);
+  z-index: 1000;
+
+  &.hidden {
+    display: none;
+  }
+
+  .register-container {
+    background: #fff;
+    padding: pxToRem(20);
+    border-radius: pxToRem(8);
+    width: pxToRem(400);
+    text-align: center;
+    position: relative;
+    box-shadow: $box-shadow;
+
+    h1 {
+      @include font($font-size: pxToRem(24));
+      margin-bottom: pxToRem(20);
+    }
+
+    .close-button {
+      position: absolute;
+      top: pxToRem(10);
+      right: pxToRem(15);
+      @include font($font-size: pxToRem(20));
+      cursor: pointer;
+
+      &:hover {
+        color: $error-color;
+      }
+    }
+
+    form {
+      @include flex($direction: column, $gap: pxToRem(15));
+
+      input {
+        @include set-size($w: 100%, $h: pxToRem(40));
+        @include font($font-size: pxToRem(14), $color: $text-input);
+        border: 1px solid $boder-input;
+        border-radius: pxToRem(4);
+        padding: pxToRem(10);
+
+        &:focus {
+          border-color: $fifth-color;
+          outline: none;
+        }
+      }
+
+      button {
+        background-color: $fifth-color;
+        @include font($font-size: pxToRem(16), $color: $text-button);
+        padding: pxToRem(10);
+        border: none;
+        border-radius: pxToRem(4);
+        cursor: pointer;
+
+        &:hover {
+          background-color: darken($fifth-color, 10%);
+        }
+      }
+    }
+
+    .error-message {
+      @include font($font-size: pxToRem(14), $color: $error-color);
+      margin-top: pxToRem(10);
+    }
+
+    .footer {
+      margin-top: pxToRem(15);
+      @include font($font-size: pxToRem(14), $color: $fourth-color);
+
+      span {
+        color: $fifth-color;
+        cursor: pointer;
+        text-decoration: underline;
+
+        &:hover {
+          color: darken($fifth-color, 10%);
+        }
+      }
+    }
+  }
+}

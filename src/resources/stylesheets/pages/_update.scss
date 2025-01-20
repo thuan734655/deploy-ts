@@ -1,0 +1,154 @@
+@use '../Abstract/' as *;
+
+.update-page {
+  @include flex($direction: column, $align: center);
+  padding-bottom: 100px;
+
+  h1 {
+    @include font($font-size: 2.5rem, $font-weight: 600, $color: $text-color);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.update-form-container {
+  background-color: $third-background-color;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  backdrop-filter: blur(10px);
+}
+
+#update-feature-form {
+  @include grid($grid-tplt-column: repeat(3, 1fr), $grid-gap: 1.5rem);
+
+  .form-group {
+    @include flex($direction: column, $gap: 0.5rem);
+
+    label {
+      @include font(
+        $font-size: 1rem,
+        $font-weight: 500,
+        $color: $fourth-color
+      );
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    textarea,
+    select {
+      @include font($font-size: 1rem, $color: $text-color);
+      background-color: rgba($rectangle, 0.6);
+      border: 1px solid $placeholder-input;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      width: 100%;
+      box-sizing: border-box;
+
+      &:focus {
+        outline: none;
+        border-color: $thirteenth-color;
+        box-shadow: 0 0 0 2px rgba($thirteenth-color, 0.2);
+      }
+
+      &::placeholder {
+        color: $placeholder-input;
+      }
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    input[type="file"] {
+      @include font($color: $fourth-color);
+      background-color: transparent;
+      padding: 0.5rem 0;
+
+      &::-webkit-file-upload-button {
+        background-color: $third-background-color;
+        border: 1px solid $placeholder-input;
+        border-radius: 6px;
+        padding: 0.5rem 1rem;
+        color: $text-color;
+        margin-right: 1rem;
+        cursor: pointer;
+
+        &:hover {
+          background-color: lighten($third-background-color, 5%);
+        }
+      }
+    }
+
+    input[type="date"] {
+      color: $text-color;
+
+      &::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+        opacity: 0.6;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+
+  .btn-update-video {
+    @include font($font-size: 1rem, $font-weight: 500, $color: $text-button);
+    @include set-size($w: 30%);
+    background: linear-gradient(135deg, $thirteenth-color, $fourteenth-color);
+    border: none;
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: absolute;
+    bottom: -75px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+
+    &:hover {
+      transform: translate(-50%, -3px);
+      box-shadow: 0 4px 12px rgba($thirteenth-color, 0.3);
+    }
+
+    &:active {
+      transform: translate(-50%, 0%);
+    }
+  }
+}
+
+.box-image {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding-bottom: 30px;
+
+  figure {
+    @include set-size($w: pxToRem(282), $h: pxToRem(480));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      @include set-size($w:100%, $h:100%);
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    figcaption {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      color: $text-color;
+      text-align: center;
+      
+    }
+  }
+}
