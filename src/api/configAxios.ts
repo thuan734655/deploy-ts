@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const configAxios = {
-  baseURL: "https://practice-ts-server.onrender.com/api",
+  baseURL: "http://localhost:5001/api",
   headers: {
     "Content-Type": "application/json",
   },
