@@ -31,10 +31,10 @@ class App {
       this.router.addRoute('/home', 'Home');
       this.router.addRoute('/add/:author', 'Add');
       this.router.addRoute('/update/:id', 'Update');
-      this.router.addRoute('/detail/:id', 'Detail');
-      this.router.addRoute('/error', 'Error');
+      this.router.addRoute('/detail/:id', 'Detai');
+      this.router.addRoute('/movies', 'Movie');
       this.router.addRoute('/tvshows', 'TV Show');
-      this.router.addRoute('/movies', 'Login');
+      this.router.addRoute('/error', 'Error');
 
       // Navigate to current path
       await this.router.navigateTo(window.location.pathname);

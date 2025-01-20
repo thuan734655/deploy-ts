@@ -94,22 +94,35 @@ class MediaModel {
         }
     }
 
-    static async getMediaByAuthor(authorName: string, page: number, limit: number): Promise<IApiResponse> {
+    static async getMediaByAuthor(authorName: string, page: number = 1, limit: number = 8): Promise<IApiResponse  | null> {
         try {
+            if (!authorName) {
+                throw new Error("Author name is required");
+            }
+        
+            page = page > 0 ? page : 1;
+            limit = limit > 0 ? limit : 8;
+            
             const response = await axiosAPI.get(`media-author`, {
                 params: {
-                    page: page || 1,
-                    limit: limit || 8,
+                    page: page,
+                    limit: limit,
                     username: authorName
                 }
             });
-            console.log(response);
+    
+            if (!response.data) {
+                console.warn(`No media found for author ${authorName}`);
+                return null;
+            }
+            
             return response.data;
         } catch (error) {
-            console.error(`Error fetching movies for author ${authorName}:`, error);
-            throw error;
+            console.error(`Error fetching media for author ${authorName}:`, error);
+            return null;
         }
     }
+    
 }
 
 export default MediaModel;

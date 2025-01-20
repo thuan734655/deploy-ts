@@ -48,8 +48,11 @@ export class BaseController {
   
         case path.startsWith('/add'): {
           const addPage = new AddPage();
+          let data:ContentRender = null;
           const result = await mediaController.getMovieByAuthor(params.author, page, limit);
-          const data :ContentRender = {mediaRes: result.data,totalItems: result.totalItems,author: params.author};
+          if(result!==null) {
+            data = {mediaRes: result.data,totalItems: result.totalItems,author: params.author};
+          }
           const addPageContent = await addPage.renderContent(data);
           root.innerHTML = addPageContent;
           addPage.afterRender();

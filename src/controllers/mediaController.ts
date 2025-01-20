@@ -28,7 +28,7 @@ class MovieController {
         }
     }
 
-    async getMovieByAuthor(author:string, page: number, limit: number): Promise<IApiResponse> {
+    async getMovieByAuthor(author:string, page: number, limit: number): Promise<IApiResponse | null> {
         try {
             return await MediaModel.getMediaByAuthor(author, page, limit);
         } catch (error) {

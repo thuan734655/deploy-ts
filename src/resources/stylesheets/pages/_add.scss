@@ -93,6 +93,17 @@
     @include flex($gap: pxToRem(40), $justify: space-evenly);
     flex-wrap: wrap;
     padding: pxToRem(14) 0 pxToRem(44) 0;
+    .does_not_exist {
+        @include font(
+          $font-size: pxToRem(20),
+          $font-weight: 600,
+          $line-height: pxToRem(24),
+          $color: $first-color
+        );
+        letter-spacing: 0.48px;
+        margin-top: 100px;
+      
+    }
     .list-movies-container {
       @include flex($direction: column, $align: flex-start, $gap: pxToRem(16));
       @include set-size($w: pxToRem(282), $h: pxToRem(480));
